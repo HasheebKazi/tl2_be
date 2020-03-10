@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const jsonWebToken = require('jsonwebtoken');
 
 /** Internal Dependencies **/
-const User = require('../models/userModel')
 const { bubbleError, throwThenbubbleError } = require('../util/error_utils');
 
 /** Builtins **/

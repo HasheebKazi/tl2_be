@@ -31,7 +31,7 @@ server.use(setCorsHeaders); // this should probably be the first middleware
 server.use(bodyParser.json());
 
 /** Routes **/
-// server.use('/app', routes);
+server.use('/app', routes);
 
 /** Catch All 404 */
 server.use('/', (req, res, next) => {
