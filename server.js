@@ -31,6 +31,15 @@ server.use(setCorsHeaders); // this should probably be the first middleware
 server.use(bodyParser.json());
 
 /** Routes **/
+/** Request IP and Type Logger */
+server.use('/', (req, res, next) => {
+    console.log('[ Incoming Request ]');
+    console.log ('    [ IP ]:', req.ip);
+    console.log ('    [ Host Name ]:', req.hostname);
+    console.log ('    [ Type ]:', req.method);
+    next();
+});
+
 server.use('/app', routes);
 
 /** Catch All 404 */
@@ -55,7 +64,9 @@ server.use((error, req, res, next) => {
 /** Start Server **/
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(result => {
+    console.log('[ Server Started ]');
     server.listen(5090);
-}).catch(err => {
+})
+.catch(err => {
     console.log(err);
 });
